@@ -3,3 +3,13 @@
 .DS_Store
 /video/out/
 /norm_showcase/
+
+# short social-media (X) cuts of the intro video; local only, not part of the website
+/video/build_short.sh
+/video/build_x.sh
+/video/scenes/00_question.html
+/video/scenes/02_title_authors.html
+/video/scenes/03_what_short.html
+/video/scenes/04_demo_full.html
+/video/scenes/08_human.html
+/video/scenes/x_short.html
