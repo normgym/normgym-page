@@ -15,6 +15,7 @@
 </p>
 
 <p align="center">
+  <a href="https://arxiv.org/pdf/2611.08613">Paper</a> &nbsp;|&nbsp;
   <a href="https://normgym.github.io/normgym-page/">Project Page</a> &nbsp;|&nbsp;
   <a href="https://github.com/binzeli/normGym">Code</a>
 </p>
@@ -63,6 +64,9 @@ See the [project page](https://normgym.github.io/normgym-page/) for full results
 @misc{li2026normgym,
   title  = {{NormGym}: Evaluating Normative Competence through Social Interaction},
   author = {Li, Binze and Zhang, Zihuan and Baek, Seokhyun and Hadfield, Gillian K. and Shu, Tianmin},
-  year   = {2026}
+  year   = {2026},
+  eprint = {2611.08613},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.AI}
 }
 ```
