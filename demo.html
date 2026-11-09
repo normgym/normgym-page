@@ -132,12 +132,15 @@
     return 200;
   }
 
-  // Earliest video time at which timestep t is on screen.
+  // Video time in the middle of the 0.4 s that timestep t is on screen. Seeking to the exact
+  // start of that span can read back as t - 1 once rounded, which sends the next "step
+  // forward" to t again and traps the button.
+  var HALF_STEP = 0.2;
   function stepToTime(t) {
     if (t <= ANCHORS[0][1]) return 0;
     for (var i = 0; i < ANCHORS.length - 1; i++) {
       var a = ANCHORS[i], b = ANCHORS[i + 1];
-      if (b[1] > a[1] && t > a[1] && t <= b[1]) return a[0] + (t - a[1]) / (b[1] - a[1]) * (b[0] - a[0]);
+      if (b[1] > a[1] && t > a[1] && t <= b[1]) return a[0] + (t - a[1]) / (b[1] - a[1]) * (b[0] - a[0]) + HALF_STEP;
     }
     return ANCHORS[ANCHORS.length - 1][0];
   }
@@ -199,8 +202,8 @@
         '<dl class="kv">' +
         '<dt>Position</dt><dd>' + fmtPos(nc.pos) + '</dd>' +
         '<dt>Action</dt><dd>' + esc(nc.action) + '</dd>' +
-        '<dt>Goal</dt><dd>' + nc.goal + ' of 2: ' + GOALS[nc.goal] + '</dd>' +
-        '<dt>Target</dt><dd>' + fmtPos(nc.target) + '</dd>' +
+        '<dt>Goal</dt><dd>' + (GOALS[nc.goal] ? nc.goal + ' of 2: ' + GOALS[nc.goal] : 'both complete') + '</dd>' +
+        '<dt>Target</dt><dd>' + (nc.target ? fmtPos(nc.target) : 'none') + '</dd>' +
         '</dl>';
       reasonEl.textContent = nc.reasoning;
       beliefEl.textContent = nc.belief;
